@@ -28,7 +28,6 @@ export class NewTaskComponent implements OnInit {
   }
 
   handleSubmitNewTask(task: any) {
-    console.log(task);
     this.newTask.userId = this.userId;
     this.submitTask.emit(this.newTask);
   }

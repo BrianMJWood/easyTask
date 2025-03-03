@@ -6,8 +6,6 @@ import { dummyTasks } from '../assets/dummy-tasks';
 })
 export class AppService {
   getTasks() {
-    console.log('hi');
-    console.log(JSON.parse(localStorage.getItem('test') || '[]'));
     return JSON.parse(localStorage.getItem('test') || '[]');
   }
 
@@ -25,7 +23,6 @@ export class AppService {
   }
 
   addTask(task: any) {
-    console.log(task);
     const tasks = this.getTasks();
     tasks.push(task);
     this.updateTasks(tasks);
