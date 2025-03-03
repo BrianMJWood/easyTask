@@ -1,0 +1,8 @@
+<article>
+  <h3>{{ task().title }}</h3>
+  <p>{{ task().summary }}</p>
+  <p>Due: {{ task().dueDate | date : "fullDate" }}</p>
+  <p class="actions">
+    <button (click)="removeTask.emit(task())">Complete</button>
+  </p>
+</article>

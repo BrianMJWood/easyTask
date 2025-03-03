@@ -1,0 +1,33 @@
+@if (showNewTaskForm) {
+<app-new-task
+  (cancelNewTask)="handleCancelNewTask()"
+  (submitTask)="handleSubmitNewTask($event)"
+  [user]="user()"
+/>
+}
+<section id="tasks">
+  @if (tasks() && user().id) {
+  <header>
+    <h2>
+      <p>{{ user().name.split(" ")[0] }}'s tasks</p>
+    </h2>
+    <menu>
+      <button (click)="addTask()">Add task</button>
+    </menu>
+  </header>
+
+  <ul>
+    @for (task of tasks(); track task.id) {
+    <li>
+      <app-task [task]="task" (removeTask)="removeTask.emit(task)" />
+    </li>
+    } @empty {
+    {{
+      noTasksFoundMessage
+    }}
+    }
+  </ul>
+  } @else {
+  {{ noUserSelectedMessage }}
+  }
+</section>
